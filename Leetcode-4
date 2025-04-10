@@ -1,0 +1,42 @@
+class Solution:
+    def findMedianSortedArrays(self, arr1: List[int], arr2: List[int]) -> float:
+        # num=nums1+nums2
+        # num.sort()
+        # left=0
+        # right=len(num)-1
+        # while left<=right:
+        #     if abs(left-right)==1:
+        #         k=(num[left]+num[right])/2
+        #         return k
+        #     elif left==right:
+        #         return num[left]
+        #     left += 1
+        #     right -= 1
+        # ------------------------------------------
+
+        # Online Python compiler (interpreter) to run Python online.
+        # Write Python 3 code in this online editor and run it.
+        dup=[]
+        i=0
+        j=0
+        while i<len(arr1) and j<len(arr2):
+            if arr1[i]<=arr2[j]:
+                dup.append(arr1[i])
+                i=i+1
+            else:
+                dup.append(arr2[j])
+                j=j+1
+        while i<len(arr1):
+            dup.append(arr1[i])
+            i=i+1
+        while j<len(arr2):
+            dup.append(arr2[j])
+            j=j+1
+        n=len(dup)
+        k=n//2
+        if n%2==0:
+            return ((dup[k-1]+dup[k])/2)
+        else:
+            return (dup[k])
+            
+                
