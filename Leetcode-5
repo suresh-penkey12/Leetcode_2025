@@ -1,0 +1,33 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        res=""
+        if len(s)<=1:
+            return s
+        for i in range(1,len(s)):
+            # odd length
+            low=i
+            high=i
+            while s[low]==s[high]:
+                low=low-1
+                high=high+1
+                if low==-1 or high==len(s):
+                    break
+            palin=""
+            for l in range(low+1,high):
+                palin=palin+s[l]
+            if len(palin)>len(res):
+                res=palin
+            # even length
+            low=i-1
+            high=i
+            while s[low]==s[high]:
+                low=low-1
+                high=high+1
+                if low==-1 or high==len(s):
+                    break
+            palin=""
+            for l in range(low+1,high):
+                palin=palin+s[l]
+            if len(palin)>len(res):
+                res=palin
+        return res
